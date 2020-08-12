@@ -3,11 +3,9 @@ const router = express.Router();
 
 router.post('/add', (req,res) => {
     console.log("datos recibiendose..");
-    console.log(req.params);
-    console.log(req.originalUrl);
-    console.log(req.baseUrl);
-    console.log(req._dumped);
-    console.log(req._consuming);
+    const obj = req.body;
+    console.log(obj.name);
+    console.log(obj.ape);
     res.end();
 });
 
