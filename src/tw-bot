@@ -1,73 +1,12 @@
-const config = require('./config');
+module.exports = {
+	consumer_key:'2wkG4Xfq3k3O3jKLQgBJKfHJb',
+	consumer_secret:'NfHrTJ3nd1TkQNhHfRtqtOT59M7dPsEBk99fM0I8F2SOxhqTzK',
+	access_token:'865829033673711617-AQdS6zLBXPSDQ77pLXokagvHhIQM1lB',
+	access_token_secret:'qLQjQjukYUuX001Dw2o9PNizs8MV4Uu0WXFCsmWIfltpi'
+};const config = require('./config');
 const twit = require('twit');
 const t = new twit(config);
 /*Me gustan los colorcitos en visual studio code*/
-
-var baseVerific = [];
-var j = 0;
-
-function sleep(miliseconds) {
-  seconds = miliseconds * 1000;
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < seconds);
-}
-
-function reTweet(tagnew) {
-
-  let tag = '#rock';
-  tag = tagnew;
-  let params = {
-    q:tag,
-    result_type:'recent',
-    count:100
-
-  }
-
-  t.get('search/tweets',params,(err,data,res) => {
-    let tweets = data.statuses;
-    let i = 0;
-    if(!err){
-      for(let dat of tweets){ 
-        i++;
-        j++;
-        if(i==5){
-          console.log(' ');
-          funqui(baseVerific);
-          break;
-        }
-        const info = {
-          screen_name:dat.user.screen_name
-        };
-        t.post('statuses/retweet/:id', info, (err,data,res) => {
-            try{
-                console.log("RT dado a: @" + dat.user.screen_name);
-                //console.log('Text en ' + dat.text).trim();
-                baseVerific[j] = dat.user.screen_name;
-            }catch(err){
-                console.log('Se ha producido un error' + err);
-            }
-        });
-      }
-    }})
-};
-
-function funqui(){
-  
-    for(j=5;j<100;j++){
-      if(baseVerific[j] == dat.user.screen_name){
-        tag = '#anime'
-        reTweet();
-      }
-    }
-  
-}
-
-console.log("Esto no deberia escribirse");
-console.log("Esto menos");
-
 
 function seguirCuenta() {
 
@@ -111,7 +50,7 @@ function meGusta(tweet) {
     //if (randomNumber() < prob_mg && tweet.user.followers_count>min_followers && (mg_diarios_actuales<mg_diarios) && tweet.entities.hashtags.length<3) {
         
       let params = {
-        q:['#concept '],
+        q:['#'+ tag],
         result_type:'recent',
         count:100
       }
@@ -153,14 +92,49 @@ function meGusta(tweet) {
 
  
 
-let objet = {
-  fw: seguirCuenta(),
-  rt: reTweet(),
-  mg: meGusta(),
-  time: 5,
-  sleep: sleep(this.time)
+const { tag,amount } = require('../routes/api-roots');
+try{
+  console.log("Hola");
+  console.log(tag);
+  console.log(amount);
+}catch(e){
+  console.log("error en funcis.. "+ e);
 }
 
 
 
+function rt() {
 
+  let newtag = '#'+ tag;
+  let params = {
+    q:newtag,
+    result_type:'recent',
+    count:amount
+
+  }
+
+  t.get('search/tweets',params,(err,data,res) => {
+    let tweets = data.statuses;
+    let i = 0;
+    if(!err){
+      for(let dat of tweets){ 
+        const info = {
+          screen_name:dat.user.screen_name
+        };
+        t.post('statuses/retweet/:id', info, (err,data,res) => {
+            try{
+                console.log("RT dado a: @" + dat.user.screen_name);
+                //console.log('Text en ' + dat.text).trim();
+                baseVerific[j] = dat.user.screen_name;
+            }catch(err){
+                console.log('Se ha producido un error: ' + err);
+            }
+        });
+      }
+    }})
+}; 
+
+
+
+
+
