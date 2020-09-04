@@ -16,6 +16,7 @@ router.post('/add', (req,res) => {
 
 router.post('/rtweet', async (req,res)=> {
 	const { body } = req;
+    console.log(body);
     const cant = body.cant;
     const tag = body.tag;
 
@@ -28,16 +29,18 @@ router.post('/rtweet', async (req,res)=> {
 
 router.post('/likes', async (req,res)=> {
 	const { body } = req;
-	
+    console.log(body);	
     if (body){		
 		var myTag = body.tag;
 		var cant = body.cant;
 	};
     
-	const liked = new rTweet&like(myTag,cant);
+	const liked = new rTweet_like(myTag,cant);
     await liked.likeTweets();
+    
 
-    res.send('listening');
+    res.redirect('/');
+    res.end();
 });
 
 module.exports = router;

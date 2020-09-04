@@ -35,21 +35,22 @@ exports.rTweet_like =  class rTweet_like {
             q:this.tag,
             result_type:'recent'
         };
-        t.get('search/tweets',options,async (err,data)=>{
+
+        t.get('search/tweets',options, (err,data)=>{
             let i = 0;
             let tweets = [];
             tweets = data.statuses;
                 
-            for(i=0;i<this.canMax;i++){
+            console.log('RT let to:');
+            for(i=0;i<this.cant;i++){
                 let params = {
                     id:tweets[i].id_str,
                     screen_name:tweets[i].user.screen_name
                 };
 
-                console.log(`Thats user ${i}: ${params.screen_name}`);
 
                 t.post('statuses/retweet/:id',params, ()=> {
-                    console.log(`Rt dado a id: @${params.screen_name}`);
+                    console.log(` @${params.screen_name}`);
                 });
             };
     
@@ -58,13 +59,30 @@ exports.rTweet_like =  class rTweet_like {
 
     likeTweets(){
         let options = {
-        
+       	    q:this.tag,
+            result_type:'recent'      
         };
 
-        t.get('search/tweets',options,()=>{
-            t.post('favorites/create',()=>{
-                
-            });
+        t.get('search/tweets',options, (err,data)=>{
+            let  i = 0;
+            
+            let tweets = [];
+            tweets = data.statuses;
+            
+            console.log(`Likes let to:`);
+            
+            for(i=0;i< this.cant;i++){
+
+                let params = {
+                    id:tweets[i].id_str,
+                    screen_name:tweets[i].user.screen_name
+                }
+            
+            
+                t.post('favorites/create/:id',params,()=>{
+                    console.log(`@${params.screen_name}, id ${params.id} `);    
+                });
+            }
         });
     }
 };
