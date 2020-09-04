@@ -1,16 +1,18 @@
 # The tw-bot/api-rest
 Thats a basic api/rest bot using twit js module ot the API twitter
 ## You should enter the token keys 
+This is necessary for create a connection between your application and the twitter API 
 ## Fisrt of all, you should have a twitter developer account
 Whit that you can generate the tokens keys
-## You have to edit the config.js file. In the main folder insert on command line:
+## You have to edit the config.js file. In the main folder insert this commands line:
 ```bash
 cd src/tw/funcis
 ```
-### And if you use neo vim, put directly the next
+### Here, if you use neo vim, put directly the next
 ```bash
 vim config.js
 ```
+And insert yours keys
 ## Usage
 On windows cmd put the next command line:
 
