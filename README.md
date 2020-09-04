@@ -6,11 +6,15 @@ On windows cmd put the next...
 ```bash
 npm start
 ```
-## You should enter the token keys on the config.js file
+## You should enter the token keys 
+You have to edit the config.js file. In the main folder insert on command line:
 ```bash
 cd src/tw/funcis
 ```
-## And if you use neo vim, put the next
+### And if you use neo vim, put the next
 ```bash
 neo config.js
 ```
+## I'm gonna try to 
+henance the user experience on the main page
+Add new options like follow some people or unfollow them
