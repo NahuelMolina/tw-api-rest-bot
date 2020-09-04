@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-5">
+			<div class="card">
+				<div class="card-body">
+                    <form action="/api/rtweet" method="POST">
+                        <div class="form-group">
+                            <textarea name="tag" cols="80" placeholder="Inserta los tags" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="cant" cols="80" placeholder="Insert a tweet" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                        Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
