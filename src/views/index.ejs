@@ -1,20 +1,33 @@
 <%- include("partials/header.ejs") %>
     <div>
+        <div class="container text-center">
+            <div><p class="text-dark">Hi width that you can tweet or give likes and retweet || <small class="text-warning">If you want it</small></p>
+            </div>
+            <div class="jumbotron">
+                <p class="text-dark">On this page you can work with diferent options, which you want || <small class="text-info">Select an option</small></p>
+            </div>
+        </div>
+        <img src="img/opensource.png" class="rounded-circle"  alt="Open Source">
         <div class="container">
-            <p>Hi width that you can tweet or give likes and retweet</p>
-            <p>Select an option</p>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/posTweet" class="btn btn-success btn-lg">Post tweet</a> 
+                    <div class="container"><p>Width this option you can send tweet to your account, i mean posted what you want</p></div>                
+                </div>
+                <div class="col-md-4">
+                    <a href="/likeTweets" class="btn btn-success btn-lg">MG</a>
+                    <div class="container"><p>Width this option you can bring favorites, the hearths which you want</p></div>                </div>
+                <div class="col-md-4">
+                    <a href="/rTweets" class="btn btn-success btn-lg">RT</a>  
+                    <div class="container"><p>And with it, you will re-posted all that wich said what you think</p></div>
+                </div>
+
+
+            </div>
+                   	
         </div>
         <div class="container">
-            <div class="container">
-                <a href="/posTweet">Post tweet</a> 
-            </div>
-            <div class="container">
-                <a href="/likeTweets">MG</a>
-            </div>
-            <div class="container">
-               <a href="/rTweets">RT</a>  
-            </div>
-		    
-               	
+            <p>User <kbd>win + r</kbd> to open the cmd prompt on Windows</p>
         </div>
     </div>

@@ -9,7 +9,7 @@ router.post('/add', (req,res) => {
     const tweeting = new twitter(myTweet);
     tweeting.tweeteando();     
 
-    res.redirect('/');	
+    res.redirect('/index');	
     res.send("resolved");
       
 });
@@ -23,7 +23,7 @@ router.post('/rtweet', async (req,res)=> {
     const rTweeted = new rTweet_like(tag,cant);
     await rTweeted.rTweeteando();
 
-    res.redirect('/');
+    res.redirect('/index');
     res.end();
 });
 
@@ -39,7 +39,7 @@ router.post('/likes', async (req,res)=> {
     await liked.likeTweets();
     
 
-    res.redirect('/');
+    res.redirect('/index');
     res.end();
 });
 
